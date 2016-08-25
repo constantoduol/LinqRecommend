@@ -20,6 +20,7 @@ chrome.runtime.onMessage.addListener(
 function processLink(data){
     //track domain performance
     trackDomainScores(data.href,data.src,data.current_url);
+    trackUserInterests(data.text,data.href);
     //track user interests
     return true;
 }
@@ -83,7 +84,9 @@ function trackDomainScores(href,src,currentUrl){
 
 }
 
-function trackUserInterests(){
+function trackUserInterests(text,href){
+    //extract text from the link and the href
+    //use this to create a profile of the user
     
 }
 
