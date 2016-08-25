@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "linq Recommend",
+    "description": "Linq Recommend rates and recommends links to you based on the links you have already visited.",
+    "version": "1.0",
+    "browser_action": {
+        "default_icon": "img/icon.png",
+        "default_popup": "popup.html",
+        "default_title": "linqRecommend"
+    },
+    "content_scripts": [{
+            "matches": ["http://*/*","https://*/*"],
+            "css": ["css/bootstrap.min.css","css/material.min.css"],
+            "js": ["js/jquery.js","js/inline_popup.js","js/material.js"]
+    }],
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],  
+    "background": {
+        "scripts": ["js/jquery.js","js/background.js"]
+    }
+}
+
+

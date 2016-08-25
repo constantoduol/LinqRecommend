@@ -1,0 +1,85 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>linq Recommend</title>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/material.min.css" rel="stylesheet">
+    <style type="text/css" >
+    body {
+        min-width: 600px; /* your desired width */
+        max-width: 100%;
+    }
+    
+    .card {
+        padding : 20px;
+    }
+    
+    li {
+        list-style-type: none;
+        padding: 10px 15px 11px;
+    }
+    
+    ul {
+        margin-left: -39px;
+        margin-top: 20px;
+    }
+    
+    #this_page {
+        color:#00B0FF;
+    }
+    </style>
+    <script src="js/jquery.js"></script>
+    <script src="js/material.js"></script>
+    <script src="js/popup.js"></script>
+  </head>
+  <body>
+      <div class="card">
+          <div class="card-block">
+              <h4 class="card-title">Linq Recommend Preferences</h4>
+              <div class="card-text">
+                  <p>Linq Recommend rates and recommends links to you based on the links you have already visited. 
+                      No data is transmitted to any remote server. Your data is safely on your computer.</p>
+                  <div class="checkbox">
+                      <label>
+                          <input type="checkbox" id="disable_this_page"> Disable on this page(<span id="this_page"></span>)
+                      </label>
+                  </div>
+                  <div class="checkbox">
+                      <label>
+                          <input type="checkbox" id="disable_all_pages"> Disable on all pages
+                      </label>
+                  </div>
+                  <div class="checkbox">
+                      <label>
+                          <input type="checkbox" id="color_links"> Color links according to ratings
+                      </label>
+                      <div>
+                          <ul>
+                              <li style='background-color:#00E676'><span class="badge">5</span></li>
+                              <li style='background-color:#00B0FF'><span class="badge">4</span></li>
+                              <li style='background-color:#009688'><span class="badge">3</span></li>
+                              <li style='background-color:#FF5722'><span class="badge">2</span></li>
+                              <li style='background-color:#F44336'><span class="badge">1</span></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <a href="#" class="btn btn-primary" id='save_btn'>Save</a>
+              <a href="#" class="btn btn-primary" id='delete_btn'>Delete History</a>
+          </div>
+      </div>
+  </body>
+</html>
+
