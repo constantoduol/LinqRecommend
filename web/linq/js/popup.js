@@ -55,14 +55,44 @@ function deleteHistory(){
     }
 }
 
+function get(key, callback) {
+    chrome.storage.sync.get(key, function (value) {
+        callback(value);
+    });
+}
+
+function set(value) {
+    chrome.storage.sync.set(value);
+}
+
+function round(num){
+    return Math.round(parseFloat(num)*100)/100;
+}
+
 document.addEventListener("DOMContentLoaded",function(){
     getCurrentTabUrl(function (url) {
         var domain = url.split("/")[2];
         $("#this_page").html(domain);
         chrome.storage.sync.get('settings', function (store) {
+            store.settings = store.settings ? store.settings : {};
             $("#disable_all_pages")[0].checked = store.settings.disable_all_pages;
             $("#disable_this_page")[0].checked = store.settings[domain]; 
             $("#color_links")[0].checked = store.settings.color_links;
+            
+            get('domains',function(domains){
+                var d = domains.domains;
+                var score = d[domain] ? round(d[domain].score) : 0;
+                $("#the_domain_score").html(score);
+            });
+            
+            get('word_store', function (store) {
+                console.log(store);
+                var theWords = "";
+                for(var word in store.word_store){
+                    theWords += word + " : " + store.word_store[word].hits + "<br/>";
+                }
+                $("#the_words").html(theWords);
+            });
         });
     });
     

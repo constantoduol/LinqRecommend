@@ -10,8 +10,8 @@
     },
     "content_scripts": [{
             "matches": ["http://*/*","https://*/*"],
-            "css": ["css/bootstrap.min.css","css/material.min.css"],
-            "js": ["js/jquery.js","js/inline_popup.js","js/material.js"]
+            "css": [],
+            "js": ["js/jquery.js","js/inline_popup.js"]
     }],
     "permissions": [
         "storage",
